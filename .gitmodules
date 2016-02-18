@@ -1,3 +1,4 @@
 [submodule "demoapp"]
 	path = demoapp
 	url = https://github.com/Flexberry/flexberry-ember-demo
+	branch = cordova
