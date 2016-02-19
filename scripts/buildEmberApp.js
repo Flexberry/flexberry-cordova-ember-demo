@@ -1,25 +1,31 @@
-module.exports = function(context) {
+module.exports = function( context ) {
 	var Q = context.requireCordovaModule('q');
 	var deferral = new Q.defer();
 	var exec = require('child_process').exec;
 
-	console.log('Start building EmberJS application ...');
+	console.log('Start building EmberJS application...');
 	process.chdir('demoapp');
-	
-	console.log('Loading npm packages ...');
-	exec(['npm install'], function(e2) {
-		if (e2 !== null) {
-			console.log('exec error: ' + e2);
+	console.log('Loading npm packages...');
+    exec(['npm install'], function(npmInstallError) {
+		if (npmInstallError !== null) {
+			console.log('exec error: ' + npmInstallError);
 		} else {
-			console.log('Building EmberJS application ...');
-			exec(['ember build --environment=production'], function(e3) {
-				if (e3 !== null) {
-					console.log('exec error: ' + e3);
-				} else {
-					console.log('EmberJS application has been successfully built.');
-					deferral.resolve();
-				}
-			});
+            console.log('Loading bower packages...');
+            exec(['bower install'], function(bowerInstallError){
+                if (bowerInstallError !== null) {
+                    console.log('exec error: ' + bowerInstallError);
+                } else {
+                    console.log('Building EmberJS application...');
+                    exec(['ember build --environment=production'], function(emberBuildError) {
+                        if (emberBuildError !== null) {
+                            console.log('exec error: ' + emberBuildError);
+                        } else {
+                            console.log('EmberJS application has been successfully built.');
+                            deferral.resolve();
+                        }
+                    });
+                }
+            });
 		}
 	});
 
