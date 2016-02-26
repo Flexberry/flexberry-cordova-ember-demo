@@ -24,4 +24,5 @@
     <engine name="ios" spec="~4.0.1" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <plugin name="cordova-plugin-geolocation" spec="~2.1.0" />
+    <icon src="res/icon.png" />
 </widget>
