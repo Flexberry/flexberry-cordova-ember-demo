@@ -1,18 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget 
-	id="net.flexberry.ember" 
-	version="0.0.1" 
-	xmlns="http://www.w3.org/ns/widgets"
-	xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="net.flexberry.ember" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Flexberry Ember Demo</name>
     <description>
     	A Flexberry Ember Demo Application.
     </description>
     <author email="dev@flexberry.net" href="http://flexberry.net">Flexberry Team</author>
     <content src="index.html" />
-    
-    <!-- Access control. -->
-    <plugin name="cordova-plugin-whitelist" version="1" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -27,7 +20,8 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
-
-    <!-- Hooks -->
-    <hook type="before_prepare" src="scripts/buildEmberApp.js" />
+    <hook src="scripts/buildEmberApp.js" type="before_prepare" />
+    <engine name="ios" spec="~4.0.1" />
+    <plugin name="cordova-plugin-whitelist" spec="1" />
+    <plugin name="cordova-plugin-geolocation" spec="~2.1.0" />
 </widget>
